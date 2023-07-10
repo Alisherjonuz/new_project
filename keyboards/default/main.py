@@ -10,6 +10,9 @@ menu = ReplyKeyboardMarkup(
             KeyboardButton(text='📊 Bot statistikasi 📊'),
             KeyboardButton(text="📚 Kurslar haqida ma'lumot 📚"),
         ],
+        [
+            KeyboardButton(text='📊 Haftalik testda qatnashish 📊'),
+        ],
     ],
     resize_keyboard=True
 )
