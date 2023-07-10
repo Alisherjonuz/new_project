@@ -6,4 +6,4 @@ class get_info(StatesGroup):
     # Foydalanuvchi buyerda 3 ta holatdan o'tishi kerak
     image = State() # ism
     text = State() # email
-    author = State() # Tel raqami
+    answer = State() # Tel raqami

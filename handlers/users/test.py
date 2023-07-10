@@ -32,13 +32,22 @@ async def bot_start(message: types.Message, state:FSMContext):
 
 @dp.message_handler(state = test.answers)
 async def get_file_id_p(message: types.Message,  state: FSMContext):
+    f = open('test_answer.txt', 'r')
+    answers = f.read()
+    f.close
+    ans = str(message.text)
+    son = 0
+    for i in range(len(answers)):
+        if ans[i]==answers[i]:
+            son+=1
     f = open('test.txt', 'a')
-    f.write(str(message.text))
+    f.write(str(son))
     f.write(',')
     f.close()
     f = open('test_id.txt', 'a')
     f.write(str(message.from_user.id))
     f.write(',')
     f.close()
+    await message.answer(f"To'g'ri javoblar soni: {len(answers)}ta dan  {son}ta")
     await message.answer("Javoblaringiz muvaffaqiyatli saqlandi",reply_markup=menu)
     await state.finish()
