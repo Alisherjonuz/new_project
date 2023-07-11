@@ -15,6 +15,18 @@ async def bot_start(message: types.Message, state:FSMContext):
         if str(i)==chat_id:
             z+=1
     if z==0:
+        await message.answer("Iltimos ism familiyangizni yozing Masalan: Alisher Numonov") 
+        await  test.name.set()
+    else:
+        await message.answer("Bu testda oldin ham qatnashgansiz",reply_markup=menu) 
+
+   
+@dp.message_handler(state = test.name)
+async def get_file_id_p(message: types.Message,  state: FSMContext):
+        f = open('test_name.txt', 'a')
+        f.write(str(message.text))
+        f.write(',')
+        f.close()
         f = open("ad_image.txt", "r")
         photo_id = f.read()
         f.close()
@@ -26,9 +38,7 @@ async def bot_start(message: types.Message, state:FSMContext):
             photo_id, caption=text
         )
         await  test.answers.set()
-    else:
-        await message.answer("Bu testda oldin ham qatnashgansiz",reply_markup=menu)
-
+        
 
 @dp.message_handler(state = test.answers)
 async def get_file_id_p(message: types.Message,  state: FSMContext):

@@ -5,7 +5,7 @@ from loader import dp
 
 @dp.message_handler(text='natija_test')
 async def bot_help(message: types.Message):
-    f = open("test_id.txt", 'r')
+    f = open("test_name.txt", 'r')
     id = f.read().split(',')
     f.close()
     f = open('test.txt', 'r')
@@ -16,6 +16,7 @@ async def bot_help(message: types.Message):
         text+=id[i]
         text+="\t"
         text+=ans[i]
+        text+=' ta'
         text+="\n"
     
     await message.answer(text)  
